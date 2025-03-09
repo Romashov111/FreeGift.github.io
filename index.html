@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DoxGram Shop</title>
+    <style>
+        /* iOS-стиль */
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+            background-color: #f9f9f9;
+            text-align: center;
+            padding: 20px;
+        }
+        .container {
+            max-width: 400px;
+            margin: auto;
+            background: white;
+            padding: 20px;
+            border-radius: 15px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+        h1 {
+            font-size: 22px;
+            margin-bottom: 15px;
+        }
+        .emoji-list {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .emoji {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+            cursor: pointer;
+            font-size: 18px;
+            transition: background 0.2s;
+        }
+        .emoji:hover, .emoji.selected {
+            background: #e0e0e0;
+        }
+        .emoji span {
+            color: #666;
+            font-size: 16px;
+        }
+        .select-btn {
+            margin-top: 15px;
+            width: 100%;
+            background: #007aff;
+            color: white;
+            border: none;
+            padding: 15px;
+            font-size: 18px;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        .select-btn:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Выбери свой смайлик</h1>
+        <div class="emoji-list">
+            <div class="emoji" onclick="selectEmoji(this, '🐻', 'https://example.com/bear')">🐻 <span>15 звёзд</span></div>
+            <div class="emoji" onclick="selectEmoji(this, '⭐', 'https://example.com/star')">⭐ <span>15 звёзд</span></div>
+            <div class="emoji" onclick="selectEmoji(this, '❤️', 'https://example.com/heart')">❤️ <span>15 звёзд</span></div>
+        </div>
+        <button class="select-btn" onclick="redirect()" disabled>Выбрать</button>
+    </div>
+
+    <script>
+        let selectedEmoji = null;
+        let selectedLink = "";
+
+        function selectEmoji(element, emoji, link) {
+            document.querySelectorAll('.emoji').forEach(e => e.classList.remove('selected'));
+            element.classList.add('selected');
+            selectedEmoji = emoji;
+            selectedLink = link;
+            document.querySelector(".select-btn").disabled = false;
+        }
+
+        function redirect() {
+            if (selectedLink) {
+                window.location.href = selectedLink;
+            }
+        }
+    </script>
+</body>
+</html>
