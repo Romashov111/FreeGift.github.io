@@ -10,11 +10,11 @@
     <div class="container">
         <header>
             <h1>🎁 Подарки Telegram</h1>
-            <p>Получите подарок Telegram за пару простых действий!</p>
+            <p>Получите подарок Telegram всего за пару простых действий! Без авторизации и вмешательств в ваш аккаунт.</p>
         </header>
 
         <div class="gift-count">
-            <span>🎁 Подарили <b id="giftTotal">148052</b> подарков</span>
+            <span>🎁 Подарили <b>148052</b> подарков</span>
         </div>
 
         <h2>Выберите подарок:</h2>
@@ -23,14 +23,16 @@
             <div class="gift">
                 <img src="heart.png" alt="Сердце">
                 <p>⭐ 15</p>
-                <button onclick="receiveGift('Сердце')">Можно получить</button>
+                <a href="#" class="select-btn">Выбрать</a>
             </div>
             <div class="gift">
                 <img src="bear.png" alt="Медведь">
                 <p>⭐ 15</p>
-                <button onclick="receiveGift('Медведь')">Можно получить</button>
+                <a href="#" class="select-btn">Выбрать</a>
             </div>
         </div>
+
+        <button id="chooseGiftBtn">Выбрать подарок</button>
     </div>
 
     <script src="script.js"></script>
