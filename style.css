@@ -10,11 +10,10 @@ body {
     width: 90%;
     max-width: 500px;
     margin: 20px auto;
-    background: rgba(255, 255, 255, 0.85);
+    background: white;
     padding: 20px;
     border-radius: 20px;
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    backdrop-filter: blur(10px);
 }
 
 header h1 {
@@ -50,11 +49,7 @@ header p {
     border-radius: 20px;
     box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
     text-align: center;
-    transition: transform 0.2s ease;
-}
-
-.gift:hover {
-    transform: scale(1.05);
+    opacity: 0.6;
 }
 
 .gift img {
@@ -62,26 +57,32 @@ header p {
     height: 80px;
 }
 
+.select-btn {
+    display: none;
+    text-decoration: none;
+    background: #007aff;
+    color: white;
+    padding: 8px 15px;
+    border-radius: 12px;
+    font-size: 16px;
+    font-weight: 500;
+    display: inline-block;
+    margin-top: 10px;
+}
+
 button {
     background: #007aff;
     color: white;
     border: none;
-    padding: 10px 20px;
-    margin-top: 10px;
+    padding: 12px 20px;
+    margin-top: 20px;
     cursor: pointer;
     border-radius: 12px;
     font-size: 16px;
     font-weight: 500;
-    transition: background 0.2s ease;
+    width: 100%;
 }
 
 button:hover {
     background: #005ecb;
-}
-
-@media (max-width: 500px) {
-    .gifts {
-        flex-direction: column;
-        gap: 15px;
-    }
 }
