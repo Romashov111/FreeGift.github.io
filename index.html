@@ -3,38 +3,37 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Подарки Telegram</title>
-    <link rel="stylesheet" href="styles.css">
+    <title>Анонимный Чат</title>
+    <style>
+        body { font-family: Arial, sans-serif; text-align: center; }
+        #chat { width: 300px; height: 400px; overflow-y: auto; border: 1px solid #ccc; padding: 10px; margin: 20px auto; }
+        #message { width: 200px; }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <header>
-            <h1>🎁 Подарки Telegram</h1>
-            <p>Получите подарок Telegram всего за пару простых действий! Без авторизации и вмешательств в ваш аккаунт.</p>
-        </header>
+    <h2>Анонимный Чат</h2>
+    <div id="chat"></div>
+    <input type="text" id="message" placeholder="Введите сообщение">
+    <button onclick="sendMessage()">Отправить</button>
 
-        <div class="gift-count">
-            <span>🎁 Подарили <b>148052</b> подарков</span>
-        </div>
+    <script>
+        const ws = new WebSocket("ws://localhost:8765");
+        const chat = document.getElementById("chat");
 
-        <h2>Выберите подарок:</h2>
+        ws.onmessage = (event) => {
+            const msg = document.createElement("div");
+            msg.textContent = event.data;
+            chat.appendChild(msg);
+            chat.scrollTop = chat.scrollHeight;
+        };
 
-        <div class="gifts">
-            <div class="gift">
-                <img src="heart.png" alt="Сердце">
-                <p>⭐ 15</p>
-                <a href="#" class="select-btn">Выбрать</a>
-            </div>
-            <div class="gift">
-                <img src="bear.png" alt="Медведь">
-                <p>⭐ 15</p>
-                <a href="#" class="select-btn">Выбрать</a>
-            </div>
-        </div>
-
-        <button id="chooseGiftBtn">Выбрать подарок</button>
-    </div>
-
-    <script src="script.js"></script>
+        function sendMessage() {
+            const input = document.getElementById("message");
+            if (input.value.trim()) {
+                ws.send(input.value);
+                input.value = "";
+            }
+        }
+    </script>
 </body>
 </html>
